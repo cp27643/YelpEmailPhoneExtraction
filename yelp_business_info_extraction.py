@@ -3,18 +3,6 @@ from bs4.element import Comment
 emails = [[]]
 notfound = True
 
-def GetWebsite(some_url):
-    try:
-        with requests.Session() as r:
-            yelp_link = r.get(some_url)
-            yelp_link_soup = bs4.BeautifulSoup(yelp_link.text)
-            comp_website = r'http://www.' + yelp_link_soup.find_all(text ='Business website')[0].parent.parent.select('a')[0].text
-        r.close()
-        return comp_website
-    except:
-        pass
-        return True
-
 def CheckIfTextIsEmail(text):
     #TODO NEED TO CHECK TO SEE IF THIS WILL ACCOUNT FOR TEXTS WITH MULTIPLE @ SYMBOLS
     if '@' in text:
